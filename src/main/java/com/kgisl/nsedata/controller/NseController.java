@@ -23,13 +23,12 @@ import org.springframework.web.util.UriBuilderFactory;
 @RequestMapping("/")
 public class NseController {
 	@RequestMapping(value ={ "/showNseData/{category}" }, method = {RequestMethod.GET})
-	public @ResponseBody String showUserTable(@PathVariable String category,UriBuilderFactory builder) {
+	public ResponseEntity<?> showUserTable(@PathVariable String category,UriBuilderFactory builder) {
 		System.out.println("++++++++++++++"+category);  
 		String nseDatas;
-	
 			RestTemplate restTemplate = new RestTemplate();
 			nseDatas = restTemplate.getForObject("https://www.nseindia.com/live_market/dynaContent/live_watch/stock_watch/"+category+"StockWatch.json",String.class); // or however I use restTemplates, havent done it yet so still fuzzy but
-		return nseDatas;
+		return new ResponseEntity<>(nseDatas,HttpStatus.OK);
 	}
 
 	// public @ResponseBody String showUserTable(@RequestBody String category) {
