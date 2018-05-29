@@ -11,10 +11,10 @@ public class NsedataApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(NsedataApplication.class, args);
 	}
-	@Bean
-	public ServletRegistrationBean h2servletRegistration() {
-		ServletRegistrationBean registration = new ServletRegistrationBean(new WebServlet());
-		registration.addUrlMappings("/nse/*");
-		return registration;
-	}
+	// @Bean
+// 	public ServletRegistrationBean h2servletRegistration() {
+// 		ServletRegistrationBean registration = new ServletRegistrationBean(new WebServlet());
+// 		registration.addUrlMappings("/nse/*");
+// 		return registration;
+// 	}
 }
