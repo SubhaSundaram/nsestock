@@ -1,0 +1,10 @@
+package com.kgisl.nsedata.service;
+
+import com.kgisl.nsedata.model.NseData;
+
+import java.util.List;
+
+public interface NseService {
+
+    public List<NseData> getAll();
+}
