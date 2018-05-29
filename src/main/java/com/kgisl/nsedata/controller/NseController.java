@@ -4,6 +4,7 @@ import java.util.*;
 import com.kgisl.nsedata.*;
 // import com.kgisl.nsedata.model.NseData;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,12 +23,13 @@ import org.springframework.web.util.UriBuilderFactory;
 @RequestMapping("/")
 public class NseController {
 	@RequestMapping(value ={ "/showNseData/{category}" }, method = {RequestMethod.GET})
-	public ResponseEntity<?>  showUserTable(@PathVariable String category,UriBuilderFactory builder) {
+	public @ResponseBody String showUserTable(@PathVariable String category,UriBuilderFactory builder) {
 		System.out.println("++++++++++++++"+category);  
 		String nseDatas;
+	
 			RestTemplate restTemplate = new RestTemplate();
 			nseDatas = restTemplate.getForObject("https://www.nseindia.com/live_market/dynaContent/live_watch/stock_watch/"+category+"StockWatch.json",String.class); // or however I use restTemplates, havent done it yet so still fuzzy but
-		return null;
+		return nseDatas;
 	}
 
 	// public @ResponseBody String showUserTable(@RequestBody String category) {
